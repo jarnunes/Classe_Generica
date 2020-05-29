@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Generica
 {
-    class Prova
+    class Prova : IComparable
     {
         public double valor;
         public DateTime data;
@@ -30,5 +30,18 @@ namespace Generica
             aux.AppendLine($"Valor: {this.valor} pontos");
             return aux.ToString();
         }
+
+        public int CompareTo(object obj)
+        {
+            Prova outra = (Prova)(obj);
+            if (this.data < outra.data)
+                return -1;
+            else if (this.data > outra.data)
+                return 1;
+            else
+                return 0;
+        }
+
+
     }
 }

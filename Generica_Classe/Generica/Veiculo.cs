@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Generica
 {
-    class Veiculo
+    class Veiculo : IComparable
     {
         public string placa;
         public string modelo;
@@ -13,6 +13,14 @@ namespace Generica
             this.placa = placa;
             this.modelo = mod;
         }
+
+        public int CompareTo(object obj)
+        {
+            Veiculo outro = (Veiculo)(obj);
+            int resultado = this.placa.CompareTo(outro.placa);
+            return resultado;
+        }
+
         public override bool Equals(object obj)
         {
             Veiculo aux = (Veiculo)(obj);

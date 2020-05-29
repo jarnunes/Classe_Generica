@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Generica
 {
-    class Lista<T>
+    class Lista<T> where T : IComparable
     {
         private T[] dados;
         private int quantMax;
@@ -52,6 +52,23 @@ namespace Generica
             return default(T);
         }
 
+        public T maior()
+        {
+            T maior = dados[0];
+            foreach (T item in dados)
+            {
+                //CompareTo retorna:
+                // -1 se meu objeto for menor
+                // 1 se meu objeto for maior
+                // 0 se meus objetos forem iguais
+
+                if (item.CompareTo(maior) > 0)
+                {
+                    maior = item;
+                }
+            }
+            return maior;
+        }
         public override string ToString()
         {
             StringBuilder lista = new StringBuilder();
